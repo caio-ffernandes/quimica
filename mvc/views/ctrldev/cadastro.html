@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastra Usuario</title>
+</head>
+<body>
+    <form action="/cadastrarusuarios" method="post">
+        <label for="txtnome">Nome</label>
+        <input type="text" name="txtnome" id="txtnome">
+        <label for="txtemail">Email</label>
+        <input type="email" name="txtemail" id="txtemail">
+        <label for="txtsenha">Senha</label>
+        <input type="password" name="txtsenha" id="txtsenha">
+        <select hidden="true" name="txttipo" id="txttipo">
+        <option value="usuario"></option>
+        </select>
+        <input type="submit" name="" id="">
+        
+    </form>
+</body>
+</html>

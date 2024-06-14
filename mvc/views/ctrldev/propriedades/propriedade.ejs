@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registra Propriedade</title>
+</head>
+<body>
+    <form action="/registrarpropriedades" method="post">
+        <label for="txtcomposto">Composto</label>
+        <select name="txtcomposto" id="txtcomposto">
+            <option value="">Selecione uma opção</option>
+             <% for(let composto of compostos){  %>
+            <option value="<%= composto.id %>"><%= composto.nome %></option>
+             <% } %>
+        </select>
+        <label for="txtnome">Nome</label>
+        <input type="text" name="txtnome" id="txtnome">
+        <label for="txtvalor">Valor</label>
+        <input type="text" name="txtvalor" id="txtvalor">
+        <input type="submit" name="" id="">
+    </form>
+</body>
+</html>

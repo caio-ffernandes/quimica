@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualiza Propriedades</title>
+    <link rel="stylesheet" href="css/css-b/style.css">
+</head>
+<body>
+    <form id="form-propriedade">
+
+        <div>
+           
+            <input value="<%= propriedade.id %>" aria-hidden="true" type="hidden" id="txtid" name="txtid">
+            <label for="txtcomposto">Composto</label>
+            <select name="txtcomposto" id="txtcomposto">
+                <option value="<%=propriedade.composto%>"><%=propriedade.composto%></option>
+                 <% for(let composto of compostos){  %>
+                <option value="<%= composto.id %>"><%= composto.nome %></option>
+                 <% } %>
+            </select>
+            <label for="txtnome">Nome</label>
+            <input value="<%= propriedade.nome %>" type="text" name="txtnome" id="txtnome">
+            <label for="txtvalor">Valor</label>
+            <input value="<%= propriedade.valor %>" type="text" name="txtvalor" id="txtvalor">
+            <input type="submit" name="" id="">
+            
+
+          
+        </div>
+
+    </form>
+    <script>
+
+        document.getElementById("form-propriedade").addEventListener("submit", (e) => {
+                    e.preventDefault()
+                    atualizar()
+                } )
+                async function atualizar(){
+        
+                    const uso = {
+                        "id": document.getElementById("txtid").value,
+                        "composto": document.getElementById("txtcomposto").value,
+                        "nome": document.getElementById("txtnome").value,
+                        "valor": document.getElementById("txtvalor").value
+                    }
+        
+                      
+                    const resposta = await fetch('/propriedade/alterar', { 
+                        method:'PUT',
+                        headers: {
+                            'Content-Type':'application/json'
+                        },
+                        body: JSON.stringify(uso)
+                     })
+                    const json = await resposta.json()
+                    const status = await json
+        
+                    console.log(uso)
+                    window.location.href = '/propriedade/lista';
+        
+                }
+        
+            </script>
+</body>
+</html>

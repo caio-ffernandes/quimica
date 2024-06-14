@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualiza Usos</title>
+    <link rel="stylesheet" href="css/css-b/style.css">
+</head>
+<body>
+    <form id="form-uso">
+
+        <div>
+           
+            <input value="<%= uso.id %>" aria-hidden="true" type="hidden" id="txtid" name="txtid">
+            <label for="txtcomposto">Composto</label>
+            <select name="txtcomposto" id="txtcomposto">
+                <option value="<%=uso.composto%>"><%=uso.composto%></option>
+                 <% for(let composto of compostos){  %>
+                <option value="<%= composto.id %>"><%= composto.nome %></option>
+                 <% } %>
+            </select>
+            <label for="txtdesc">Descrição</label>
+            <textarea  cols="" rows="6"  name="txtdesc" id="txtdesc"><%= uso.descricao%></textarea>
+            
+
+          
+        </div>
+
+<input type="submit" name="" id="">
+    </form>
+    <script>
+
+        document.getElementById("form-uso").addEventListener("submit", (e) => {
+                    e.preventDefault()
+                    atualizar()
+                } )
+                async function atualizar(){
+        
+                    const uso = {
+                        "id": document.getElementById("txtid").value,
+                        "composto": document.getElementById("txtcomposto").value,
+                        "descricao": document.getElementById("txtdesc").value,
+                        
+                    }
+        
+                      
+                    const resposta = await fetch('/uso/alterar', { 
+                        method:'PUT',
+                        headers: {
+                            'Content-Type':'application/json'
+                        },
+                        body: JSON.stringify(uso)
+                     })
+                    const json = await resposta.json()
+                    const status = await json
+        
+                    console.log(uso)
+                    window.location.href = '/uso/lista';
+                }
+        
+            </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refistra Composto</title>
+    <link rel="stylesheet" href="css/css-b/style.css">
+</head>
+<body>
+    <form class="form-container" action="/registrarcomposto" method="post">
+
+        <div>
+            <label for="txtnome">Nome</label>
+            <input type="text" name="txtnome" id="txtnome">
+
+            <label for="txtformula">Formula Molecular</label>
+            <input type="text" name="txtformula" id="txtformula">
+
+            <label for="txtestrutura">Estrutura Molecular</label>
+            <input type="text" name="txtestrutura" id="txtestrutura">
+
+            <label for="txtgrupo">Grupo</label>
+            <select name="txtgrupo" id="txtgrupo">
+                <option value="">Selecione uma opção</option>
+                 <% for(let grupo of grupos){  %>
+                <option value="<%= grupo.id %>"><%= grupo.nome %></option>
+                 <% } %>
+            </select>
+            <label for="txtusuario">Usuario</label>
+            <select name="txtusuario" id="txtusuario">
+                <option value="">Selecione uma opção</option>
+                 <% for(let usuario of usuarios){  %>
+                <option value="<%= usuario.id %>"><%= usuario.nome %></option>
+                 <% } %>
+            </select>
+            
+
+          
+        </div>
+
+<input type="submit" name="" id="">
+    </form>
+</body>
+</html>

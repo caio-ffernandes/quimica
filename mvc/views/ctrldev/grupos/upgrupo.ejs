@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualiza Usos</title>
+    <link rel="stylesheet" href="css/css-b/style.css">
+</head>
+<body>
+    <form id="form-grupo">
+
+        <div>
+           
+            <input value="<%= grupo.id %>" aria-hidden="true" type="hidden" id="txtid" name="txtid">
+            <label for="txtnome">Nome</label>
+            <input value="<%= grupo.nome %>" type="text" name="txtnome" id="txtnome">
+            <label for="txtdesc">Descrição</label>
+            <textarea  cols="" rows="6"  name="txtdesc" id="txtdesc"><%= grupo.descricao%></textarea>
+            
+
+          
+        </div>
+
+<input type="submit" name="" id="">
+    </form>
+    <script>
+
+        document.getElementById("form-grupo").addEventListener("submit", (e) => {
+                    e.preventDefault()
+                    atualizar()
+                } )
+                async function atualizar(){
+        
+                    const grupo = {
+                        "id": document.getElementById("txtid").value,
+                        "nome": document.getElementById("txtnome").value,
+                        "descricao": document.getElementById("txtdesc").value,
+                        
+                    }
+        
+                      
+                    const resposta = await fetch('/grupo/alterar', { 
+                        method:'PUT',
+                        headers: {
+                            'Content-Type':'application/json'
+                        },
+                        body: JSON.stringify(grupo)
+                     })
+                    const json = await resposta.json()
+                    const status = await json
+        
+                    window.location.href = '/grupo/lista';
+        
+                }
+        
+            </script>
+</body>
+</html>

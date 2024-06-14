@@ -1,0 +1,357 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 20px;
+  text-align: center;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: #ecf0f1;
+  text-decoration: none;
+}
+
+main {
+  padding: 20px;
+}
+
+h1, h2 {
+  color: #2c3e50;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  width: calc(100% - 120px);
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+#results {
+  margin-top: 20px;
+}
+
+.result-item {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+}
+
+.carousel-images {
+  display: flex;
+  overflow: hidden;
+  width: 300px;
+}
+
+.carousel-images img {
+  width: 100%;
+  display: none;
+}
+
+.carousel-images img.active {
+  display: block;
+}
+
+.carousel-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.carousel-button:hover {
+  background-color: #2980b9;
+}
+
+
+/* /////////////////////////////////////  ORBITA  ////////////////////////////////////////// */
+div#orbita {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  overflow: hidden;
+}
+div#orbita .container {
+  font-size: 6px;
+  width: 40em;
+  height: 40em;
+  position: absolute;
+  top: 39vh;
+  left: 70%;
+  margin: 0;
+}
+
+div#orbita img{
+  height: 130%;
+  width: 130%;
+}
+div#orbita .sun {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 15em;
+  left: 15em;
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
+  box-shadow: 0 0 3em rgb(255, 128, 0);
+  margin: 0;
+  animation: orbit 50s linear infinite;
+  
+}
+div#orbita .mercury,
+div#orbita .venus,
+div#orbita .earth,
+div#orbita .moon,
+div#orbita .mars,
+div#orbita .jupiter,
+div#orbita .saturn,
+div#orbita .uranus,
+div#orbita .neptune,
+div#orbita .pluto {
+  position: absolute;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+  border-width: 0.1em 0.1em 0 0;
+  border-radius: 50%;
+  margin: 0;
+  
+}
+
+div#orbita .mercury {
+  bottom: 12.5em; 
+  left: 12.5em;
+  width: 15em;
+  height: 15em;
+  animation: orbit-mercury 68.7s linear infinite;
+
+}
+
+
+div#orbita .venus {
+  top: 10em;
+  left: 10em;
+  width: 20em;
+  height: 20em;
+  animation: orbit 48.7s linear infinite;
+}
+
+div#orbita .earth {
+  top: 6em;
+  left: 6em;
+  width: 28em;
+  height: 28em; 
+  animation: orbit 36.5s linear infinite;   
+}
+div#orbita .moon {
+  top: 2em;
+  right: -1em;
+  width: 7em;
+  height: 7em; 
+  animation: orbit 2.7s linear infinite;
+}
+div#orbita .mars {
+  top: 2em;
+  left: 2.5em;
+  width: 36em;
+  height: 36em; 
+  animation: orbit 26.5s linear infinite;
+}
+div#orbita .jupiter {
+  top: -2em;
+  left: -2em;
+  width: 45em;
+  height: 45em; 
+  animation: orbit 21s linear infinite;
+}
+div#orbita .saturn {
+  top: -7em;
+  left: -7em;
+  width: 55em;
+  height: 55em; 
+  animation: orbit 17s linear infinite;
+}
+div#orbita .uranus {
+  top: -12em;
+  left: -12em;
+  width: 65em;
+  height: 65em; 
+  animation: orbit 19s linear infinite;
+}
+div#orbita .neptune {
+  top: -17em;
+  left: -17em;
+  width: 75em;
+  height: 75em; 
+  animation: orbit 15s linear infinite;
+}
+div#orbita .pluto {
+  top: -22em;
+  left: -22em;
+  width: 85em;
+  height: 85em; 
+  animation: orbit 18s linear infinite;
+}
+
+div#orbita .mercury::before,
+div#orbita .venus::before,
+div#orbita .earth::before,
+div#orbita .moon::before,
+div#orbita .mars::before,
+div#orbita .jupiter::before,
+div#orbita .saturn::before,
+div#orbita .uranus::before,
+div#orbita .neptune::before,
+div#orbita .pluto::before{
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  animation: orbit 30s linear infinite;
+  
+}
+div#orbita .mercury::before {
+  top: 1.5em;
+  right: 0.8em;
+  width: 2em;
+  height: 2em;
+  background-image: url('images/mercury.png');
+  background-size: cover;
+}
+div#orbita .venus::before {
+  top: 2em;
+  right: 2em;
+  width: 2em;
+  height: 2em;
+  background-image: url('images/venus.png');
+  background-size: cover;
+}
+div#orbita .earth::before {
+  top: 3em;
+  right: 0em;
+  width: 5em;
+  height: 5em;
+  background-image: url('images/earth.png');
+  background-size: cover;
+}
+
+div#orbita .moon::before {
+  top: 0.8em;
+  right: 0.2em;
+  width: 1.2em;
+  height: 1.2em;
+  background-image: url('images/moon.png');
+  background-size: cover;
+}
+div#orbita .mars::before {
+  top: 5em;
+  right: 3em;
+  width: 3em;
+  height: 3em;
+  background-image: url('images/mars.png');
+  background-size: cover;
+}
+div#orbita .jupiter::before {
+  top: 6em;
+  right: 3em;
+  width: 5em;
+  height: 5em;
+  background-image: url('images/jupiter.png');
+  background-size: cover;
+}
+div#orbita .saturn::before {
+  top: 7.5em;
+  right: 5em;
+  width: 4.5em;
+  height: 4.5em;
+  background-image: url('images/saturn.png');
+  background-size: cover;
+}
+div#orbita .uranus::before {
+  top: 9em;
+  right: 6.5em;
+  width: 4em;
+  height: 4em;
+  background-image: url('images/uranus.png');
+  background-size: cover;
+}
+div#orbita .neptune::before {
+  top: 10em;
+  right: 8em;
+  width: 4em;
+  height: 4em;
+  background-image: url('images/neptune.png');
+  background-size: cover;
+}
+div#orbita .pluto::before {
+  top: 11em;
+  right: 10em;
+  width: 4em;
+  height: 4em;
+  background-image: url('images/pluto.png');
+  background-size: cover;
+}
+
+div#orbita .star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  z-index: 1;
+
+}
+
+@keyframes orbit {
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-mercury {
+  to {
+      transform: rotate(-360deg);
+  }
+}

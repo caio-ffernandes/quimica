@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualiza Usos</title>
+    <link rel="stylesheet" href="css/css-b/style.css">
+</head>
+<body>
+    <form id="form-composto">
+
+        <div>
+           
+            <input value="<%= composto.id %>" aria-hidden="true" type="hidden" id="txtid" name="txtid">
+            <label for="txtnome">Nome</label>
+            <input value="<%= composto.nome %>" type="text" name="txtnome" id="txtnome">
+            <label for="txtformula">Formula</label>
+            <input value="<%= composto.formula %>" type="text" name="txtformula" id="txtformula">
+            <label for="txtestrutura">Estrutura</label>
+            <input value="<%= composto.estrutura %>" type="text" name="txtestrutura" id="txtestrutura">
+            <label for="txtgrupo">Grupo</label>
+            <select name="txtgrupo" id="txtgrupo">
+                <option value="<%= composto.grupo %>"><%= composto.grupo %></option>
+                 <% for(let grupo of grupos){  %>
+                <option value="<%= grupo.id %>"><%= grupo.nome %></option>
+                 <% } %>
+            </select>
+            <label for="txtusuario">Usuario</label>
+            <select name="txtusuario" id="txtusuario">
+                <option value="<%= composto.criador %>"><%= composto.criador %></option>
+                 <% for(let usuario of usuarios){  %>
+                <option value="<%= usuario.id %>"><%= usuario.nome %></option>
+                 <% } %>
+            </select>
+           
+            
+
+          
+        </div>
+
+<input type="submit" name="" id="">
+    </form>
+    <script>
+
+        document.getElementById("form-composto").addEventListener("submit", (e) => {
+                    e.preventDefault()
+                    atualizar()
+                } )
+                async function atualizar(){
+        
+                    const composto = {
+                        "id": document.getElementById("txtid").value,
+                        "nome": document.getElementById("txtnome").value,
+                        "formula": document.getElementById("txtformula").value,
+                        "estrutura": document.getElementById("txtestrutura").value,
+                        "grupo": document.getElementById("txtgrupo").value,
+                        "criador": document.getElementById("txtusuario").value
+                    }
+        
+                      
+                    const resposta = await fetch('/composto/alterar', { 
+                        method:'PUT',
+                        headers: {
+                            'Content-Type':'application/json'
+                        },
+                        body: JSON.stringify(composto)
+                     })
+                    const json = await resposta.json()
+                    const status = await json
+        
+                   
+                    window.location.href = '/grupo/lista';
+                }
+        
+            </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualiza Propriedades</title>
+    <link rel="stylesheet" href="css/css-b/style.css">
+</head>
+<body>
+    <form id="form-usuario">
+
+        <div>
+            <input value="<%= usuario.id %>" aria-hidden="true" type="hidden" id="txtid" name="txtid">
+            <label for="txtnome">Nome</label>
+            <input value="<%= usuario.nome %>" type="text" name="txtnome" id="txtnome">
+            <label for="txtemail">Email</label>
+            <input value="<%= usuario.email %>" type="email" name="txtemail" id="txtemail">
+            <label for="txtsenha">Senha</label>
+            <input value="<%= usuario.senha %>" type="password" name="txtsenha" id="txtsenha">
+            <select name="txttipo" id="txttipo">
+                <option value="<%= usuario.tipo %>"><%= usuario.tipo %></option>
+                <option value="usuario">usuario</option>
+                <option value="admin">admin</option>
+            </select>
+            
+            <input type="submit" name="" id="">
+            
+            
+
+          
+        </div>
+
+    </form>
+    <script>
+
+        document.getElementById("form-usuario").addEventListener("submit", (e) => {
+                    e.preventDefault()
+                    atualizar()
+                } )
+                async function atualizar(){
+        
+                    const usuario = {
+                        "id": document.getElementById("txtid").value,
+                        "nome": document.getElementById("txtnome").value,
+                        "email": document.getElementById("txtemail").value,
+                        "senha": document.getElementById("txtsenha").value,
+                        "tipo": document.getElementById("txttipo").value
+                    }
+        
+                      
+                    const resposta = await fetch('/usuario/alterar', { 
+                        method:'PUT',
+                        headers: {
+                            'Content-Type':'application/json'
+                        },
+                        body: JSON.stringify(usuario)
+                     })
+                    const json = await resposta.json()
+                    const status = await json
+        
+                    console.log(usuario)
+                    window.location.href = '/usuario/lista';
+                }
+        
+            </script>
+</body>
+</html>
